@@ -202,7 +202,7 @@ export default function Login() {
                     >
                       admin@flatlogic.com
                     </code>{' '}
-                    to login as Admin
+                    to login as Super-Admin
                   </p>
                   <p>
                     Use{' '}
