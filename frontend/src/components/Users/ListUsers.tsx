@@ -126,6 +126,8 @@ const ListUsers = ({
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/users/users-edit/?id=${item.id}`}
+                  pathView={`/users/users-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

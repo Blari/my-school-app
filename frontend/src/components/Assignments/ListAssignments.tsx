@@ -80,6 +80,8 @@ const ListAssignments = ({
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/assignments/assignments-edit/?id=${item.id}`}
+                  pathView={`/assignments/assignments-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

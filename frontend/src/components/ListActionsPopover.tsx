@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Button from '@mui/material/Button';
 import BaseIcon from './BaseIcon';
 import {
@@ -18,6 +19,8 @@ type Props = {
   hasUpdatePermission: boolean;
   className?: string;
   iconClassName?: string;
+  pathEdit?: string;
+  pathView?: string;
 };
 
 const ListActionsPopover = ({
@@ -28,12 +31,15 @@ const ListActionsPopover = ({
   hasUpdatePermission,
   className,
   iconClassName,
+  pathEdit,
+  pathView,
 }: Props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  const linkView = pathView;
+  const linkEdit = pathEdit;
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -72,26 +78,31 @@ const ListActionsPopover = ({
         }}
       >
         <div className={'flex  flex-col'}>
-          <Button
-            startIcon={<BaseIcon path={mdiEye} size={24} />}
-            className='MuiButton-colorInherit'
-            onClick={() => {
-              onView(itemId);
-            }}
-          >
-            View
-          </Button>
-
-          {hasUpdatePermission && (
+          <Link href={linkView} passHref>
             <Button
-              startIcon={<BaseIcon path={mdiPencilOutline} size={24} />}
-              className='MuiButton-colorInherit'
+              startIcon={<BaseIcon path={mdiEye} size={24} />}
+              className='w-full MuiButton-colorInherit'
               onClick={() => {
-                onEdit(itemId);
+                onView(itemId);
               }}
+              sx={{ justifyContent: 'start' }}
             >
-              Edit
+              View
             </Button>
+          </Link>
+          {hasUpdatePermission && (
+            <Link href={linkEdit} passHref>
+              <Button
+                startIcon={<BaseIcon path={mdiPencilOutline} size={24} />}
+                className='w-full MuiButton-colorInherit'
+                onClick={() => {
+                  onEdit(itemId);
+                }}
+                sx={{ justifyContent: 'start' }}
+              >
+                Edit
+              </Button>
+            </Link>
           )}
           {hasUpdatePermission && (
             <Button
@@ -101,6 +112,7 @@ const ListActionsPopover = ({
                 handleClose();
                 onDelete(itemId);
               }}
+              sx={{ justifyContent: 'start' }}
             >
               Delete
             </Button>

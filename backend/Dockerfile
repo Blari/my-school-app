@@ -1,4 +1,4 @@
-FROM node:14.15
+FROM node:20.15.1-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -19,4 +19,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD bash -c "yarn start"
+CMD [ "yarn", "start" ]

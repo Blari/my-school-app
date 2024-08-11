@@ -31,6 +31,8 @@ type Props = {
   onDateRangeChange: (range: { start: string; end: string }) => void;
   entityName: string;
   showField: string;
+  pathEdit?: string;
+  pathView?: string;
   'start-data-key': string;
   'end-data-key': string;
 };
@@ -44,6 +46,8 @@ const BigCalendar = ({
   onDateRangeChange,
   entityName,
   showField,
+  pathEdit,
+  pathView,
   'start-data-key': startDataKey,
   'end-data-key': endDataKey,
 }: Props) => {
@@ -127,6 +131,8 @@ const BigCalendar = ({
               onView={handleViewAction}
               onEdit={handleEditAction}
               hasUpdatePermission={hasUpdatePermission}
+              pathEdit={pathEdit}
+              pathView={pathView}
             />
           ),
         }}
@@ -141,9 +147,20 @@ const MyCustomEvent = (
     onView: (id: string) => void;
     onEdit: (id: string) => void;
     hasUpdatePermission: boolean;
+    pathEdit?: string;
+    pathView?: string;
   } & EventProps<TEvent>,
 ) => {
-  const { onEdit, onView, onDelete, hasUpdatePermission, title, event } = props;
+  const {
+    onEdit,
+    onView,
+    onDelete,
+    hasUpdatePermission,
+    title,
+    event,
+    pathEdit,
+    pathView,
+  } = props;
 
   return (
     <div className={'flex items-center justify-between relative'}>
@@ -160,6 +177,8 @@ const MyCustomEvent = (
         onDelete={onDelete}
         onView={onView}
         onEdit={onEdit}
+        pathEdit={`${pathEdit}${event.id}`}
+        pathView={`${pathView}${event.id}`}
         hasUpdatePermission={hasUpdatePermission}
       />
     </div>
