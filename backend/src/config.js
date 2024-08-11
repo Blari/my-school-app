@@ -16,18 +16,15 @@ const config = {
     MICROSOFT: 'microsoft',
   },
   secret_key: 'HUEyqESqgQ1yTwzVlO6wprC9Kf1J1xuA',
-  remote: '',
-  port: process.env.NODE_ENV === 'production' ? '' : '8080',
-  hostUI: process.env.NODE_ENV === 'production' ? '' : 'http://localhost',
-  portUI: process.env.NODE_ENV === 'production' ? '' : '3000',
+  remote: process.env.REMOTE_URL || '',
+  port: process.env.NODE_ENV === 'production' ? process.env.PORT || '80' : '8080',
+  hostUI: process.env.NODE_ENV === 'production' ? process.env.HOST_UI || '' : 'http://localhost',
+  portUI: process.env.NODE_ENV === 'production' ? process.env.PORT_UI || '80' : '3000',
 
-  portUIProd: process.env.NODE_ENV === 'production' ? '' : ':3000',
-
-  swaggerUI: process.env.NODE_ENV === 'production' ? '' : 'http://localhost',
-  swaggerPort: process.env.NODE_ENV === 'production' ? '' : ':8080',
+  swaggerUI: process.env.NODE_ENV === 'production' ? process.env.SWAGGER_UI || '' : 'http://localhost',
+  swaggerPort: process.env.NODE_ENV === 'production' ? process.env.SWAGGER_PORT || '80' : '8080',
   google: {
-    clientId:
-      '671001533244-kf1k1gmp6mnl0r030qmvdu6v36ghmim6.apps.googleusercontent.com',
+    clientId: '671001533244-kf1k1gmp6mnl0r030qmvdu6v36ghmim6.apps.googleusercontent.com',
     clientSecret: 'Yo4qbKZniqvojzUQ60iKlxqR',
   },
   microsoft: {
@@ -53,17 +50,13 @@ const config = {
   },
 
   project_uuid: '20b78f05-4e14-49d1-9fa4-ff2fe813ee6e',
-  flHost:
-    process.env.NODE_ENV === 'production'
-      ? 'https://flatlogic.com/projects'
-      : 'http://localhost:3000/projects',
+  flHost: process.env.NODE_ENV === 'production' ? 'https://flatlogic.com/projects' : 'http://localhost:3000/projects',
 };
 
-config.host =
-  process.env.NODE_ENV === 'production' ? config.remote : 'http://localhost';
-config.apiUrl = `${config.host}${config.port ? `:${config.port}` : ``}/api`;
-config.swaggerUrl = `${config.swaggerUI}${config.swaggerPort}`;
-config.uiUrl = `${config.hostUI}${config.portUI ? `:${config.portUI}` : ``}/#`;
-config.backUrl = `${config.hostUI}${config.portUI ? `:${config.portUI}` : ``}`;
+config.host = process.env.NODE_ENV === 'production' ? config.remote : 'http://localhost';
+config.apiUrl = `${config.host}:${config.port}/api`;
+config.swaggerUrl = `${config.swaggerUI}:${config.swaggerPort}`;
+config.uiUrl = `${config.hostUI}:${config.portUI}/#/`;
+config.backUrl = `${config.hostUI}:${config.portUI}/`;
 
 module.exports = config;
