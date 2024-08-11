@@ -37,14 +37,6 @@ const AssignmentsData = [
 
     due_date: new Date('2023-10-25T00:00:00Z'),
   },
-
-  {
-    title: 'English Poem',
-
-    description: 'Write a poem about nature',
-
-    due_date: new Date('2023-10-30T00:00:00Z'),
-  },
 ];
 
 const ClassesData = [
@@ -66,14 +58,6 @@ const ClassesData = [
 
   {
     name: 'History 101',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_many" field
-  },
-
-  {
-    name: 'English 101',
 
     // type code here for "relation_one" field
 
@@ -105,14 +89,6 @@ const GradesData = [
 
     // type code here for "relation_one" field
   },
-
-  {
-    grade: 85,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
 ];
 
 const ParentsData = [
@@ -125,7 +101,7 @@ const ParentsData = [
 
     // type code here for "relation_many" field
 
-    animal: 'Ernest Rutherford',
+    animal: 'Theodosius Dobzhansky',
   },
 
   {
@@ -137,7 +113,7 @@ const ParentsData = [
 
     // type code here for "relation_many" field
 
-    animal: 'Erwin Schrodinger',
+    animal: 'Ludwig Boltzmann',
   },
 
   {
@@ -149,19 +125,7 @@ const ParentsData = [
 
     // type code here for "relation_many" field
 
-    animal: 'John von Neumann',
-  },
-
-  {
-    first_name: 'Emily',
-
-    last_name: 'Clark',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_many" field
-
-    animal: 'Paul Ehrlich',
+    animal: 'Sigmund Freud',
   },
 ];
 
@@ -195,16 +159,6 @@ const StudentsData = [
 
     // type code here for "relation_one" field
   },
-
-  {
-    first_name: 'James',
-
-    last_name: 'Wilson',
-
-    date_of_birth: new Date('2005-11-30T00:00:00Z'),
-
-    // type code here for "relation_one" field
-  },
 ];
 
 const TeachersData = [
@@ -234,16 +188,6 @@ const TeachersData = [
     last_name: 'Taylor',
 
     subject: 'History',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    first_name: 'Laura',
-
-    last_name: 'Davis',
-
-    subject: 'English',
 
     // type code here for "relation_one" field
   },
@@ -284,17 +228,6 @@ async function associateClassWithTeacher() {
   if (Class2?.setTeacher) {
     await Class2.setTeacher(relatedTeacher2);
   }
-
-  const relatedTeacher3 = await Teachers.findOne({
-    offset: Math.floor(Math.random() * (await Teachers.count())),
-  });
-  const Class3 = await Classes.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Class3?.setTeacher) {
-    await Class3.setTeacher(relatedTeacher3);
-  }
 }
 
 // Similar logic for "relation_many"
@@ -332,17 +265,6 @@ async function associateGradeWithStudent() {
   if (Grade2?.setStudent) {
     await Grade2.setStudent(relatedStudent2);
   }
-
-  const relatedStudent3 = await Students.findOne({
-    offset: Math.floor(Math.random() * (await Students.count())),
-  });
-  const Grade3 = await Grades.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Grade3?.setStudent) {
-    await Grade3.setStudent(relatedStudent3);
-  }
 }
 
 async function associateGradeWithAssignment() {
@@ -378,17 +300,6 @@ async function associateGradeWithAssignment() {
   if (Grade2?.setAssignment) {
     await Grade2.setAssignment(relatedAssignment2);
   }
-
-  const relatedAssignment3 = await Assignments.findOne({
-    offset: Math.floor(Math.random() * (await Assignments.count())),
-  });
-  const Grade3 = await Grades.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Grade3?.setAssignment) {
-    await Grade3.setAssignment(relatedAssignment3);
-  }
 }
 
 async function associateParentWithUser() {
@@ -423,17 +334,6 @@ async function associateParentWithUser() {
   });
   if (Parent2?.setUser) {
     await Parent2.setUser(relatedUser2);
-  }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Parent3 = await Parents.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Parent3?.setUser) {
-    await Parent3.setUser(relatedUser3);
   }
 }
 
@@ -472,17 +372,6 @@ async function associateStudentWithUser() {
   if (Student2?.setUser) {
     await Student2.setUser(relatedUser2);
   }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Student3 = await Students.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Student3?.setUser) {
-    await Student3.setUser(relatedUser3);
-  }
 }
 
 async function associateTeacherWithUser() {
@@ -517,17 +406,6 @@ async function associateTeacherWithUser() {
   });
   if (Teacher2?.setUser) {
     await Teacher2.setUser(relatedUser2);
-  }
-
-  const relatedUser3 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Teacher3 = await Teachers.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Teacher3?.setUser) {
-    await Teacher3.setUser(relatedUser3);
   }
 }
 

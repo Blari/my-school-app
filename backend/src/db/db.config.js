@@ -14,7 +14,7 @@ module.exports = {
     dialect: 'postgres',
     password: '',
     database: 'db_school_app',
-    host: process.env.DEV_DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'localhost',
     logging: console.log,
     seederStorage: 'sequelize',
   },

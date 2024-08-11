@@ -1,4 +1,4 @@
-FROM node:19
+FROM node:20.15.1-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -16,4 +16,4 @@ RUN yarn install
 COPY . .
 
 EXPOSE 3000
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "dev" ]
