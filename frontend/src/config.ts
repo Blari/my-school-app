@@ -1,6 +1,6 @@
 export const hostApi =
   process.env.NODE_ENV === 'development' ? 'http://localhost' : '';
-export const portApi = process.env.NODE_ENV === 'development' ? 8080 : '';
+export const portApi = process.env.NODE_ENV === 'development' ? 8081 : '';
 export const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}/api`;
 
 export const localStorageDarkModeKey = 'darkMode';
