@@ -169,7 +169,7 @@ if (fs.existsSync(publicDir)) {
   });
 }
 
-const PORT = '' || 8080;
+const PORT = 8081;
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, () => {
